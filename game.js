@@ -4,9 +4,9 @@ function Game(){
     this.currentPlayer = this.playerOne;
     
     this.board = [
-        ['', '', ''],
-        ['', '', ''],
-        ['', '', '']
+        ['0', '1', '2'],
+        ['3', '4', '5'],
+        ['6', '7', '8']
     ]
 
     this.fill = (evt) => {
@@ -23,31 +23,44 @@ function Game(){
                 evt.target.appendChild(circle);
             }
             this.changePlayer();
-            this.update(Number(evt.target.classList[1], this.currentPlayer, ));
+            const lineNumber = evt.target.parentNode.id.slice(-1);
+            this.update(Number(evt.target.classList[1]), this.currentPlayer, lineNumber);
         }
     }
     
     this.changePlayer = () => {
-        // adding things
         if (this.currentPlayer == this.playerOne){
             this.currentPlayer = this.playerTwo;
         } else {
             this.currentPlayer  = this.playerOne;
-            // adding comment to test
         }
     }
 
     this.update = (chosenSquare, img, lineNumber) => {
-        const line = this.board[lineNumber];
+        var line = this.board[lineNumber];
         line[chosenSquare] = img;
+        console.log(this.board);
         this.checkWinner();
     }
 
     this.checkWinner = () => {
-        for (const line of this.board){
-            if (line[0] == line[1] == line[2]){
+        for (const line of this.board){ // line
+            if (line[0] == line[1] && line[0] == line[2]){
                 this.winnerMsg();
             }
+        }
+        if (this.board[1][1] == this.board[0][0] // diagonal 
+            && this.board[1][1] == this.board[2][2]
+            || this.board[1][1] == this.board[2][0] 
+            && this.board[0][2]){
+            this.winnerMsg();
+        } else if (this.board[0][0] == this.board[1][0] 
+            && this.board[0][0] == this.board[2][0]
+            || this.board[1][0] == this.board[1][1]
+            && this.board[1][0] == this.board[1][2]
+            || this.board[2][0] == this.board[2][1]
+            && this.board[2][0] == this.board[2][2]){ // column
+                this.winnerMsg();
         }
     }
 
