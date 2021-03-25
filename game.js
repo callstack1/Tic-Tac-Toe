@@ -28,6 +28,7 @@ function Game(){
     }
     
     this.changePlayer = () => {
+        // adding things
         if (this.currentPlayer == this.playerOne){
             this.currentPlayer = this.playerTwo;
         } else {
