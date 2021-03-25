@@ -8,6 +8,24 @@ function Game(){
         ['', '', ''],
         ['', '', '']
     ]
+
+    this.fill = (evt) => {
+        if (evt.target.children.length == 0 &&
+            evt.target.classList[0] == "square"){
+            if (this.currentPlayer == 'o'){
+                const cross = document.createElement('p');
+                cross.className = "cross";
+                cross.textContent = "X";
+                evt.target.appendChild(cross);
+            } else if (this.currentPlayer == 'x'){
+                const circle = document.createElement('div');
+                circle.className = "circle";
+                evt.target.appendChild(circle);
+            }
+            this.changePlayer();
+            this.update(Number(evt.target.classList[1], this.currentPlayer, ));
+        }
+    }
     
     this.changePlayer = () => {
         // adding things
