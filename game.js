@@ -28,10 +28,12 @@ function Game(){
     }
     
     this.changePlayer = () => {
+        // adding things
         if (this.currentPlayer == this.playerOne){
             this.currentPlayer = this.playerTwo;
         } else {
             this.currentPlayer  = this.playerOne;
+            // adding comment to test
         }
     }
 
