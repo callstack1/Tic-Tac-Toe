@@ -23,7 +23,7 @@ function Game(){
                 evt.target.appendChild(circle);
             }
             this.changePlayer();
-            this.update(evt.target.id, this.currentPlayer, Number(evt.target.classList[1]));
+            this.update(Number(evt.target.classList[1], this.currentPlayer, ));
         }
     }
     
