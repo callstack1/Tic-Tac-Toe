@@ -32,6 +32,7 @@ function Game(){
             this.currentPlayer = this.playerTwo;
         } else {
             this.currentPlayer  = this.playerOne;
+            // adding comment to test
         }
     }
 
